@@ -1,5 +1,5 @@
 from flask_restplus import fields
-from ceep_api.apis.restplus import api
+from ceep_api.api.restplus import api
 
 adbMonitor = api.model('AdbMonitor', {
     'id': fields.Integer(readOnly=True, description='ID'),

@@ -7,7 +7,9 @@ class AdbMonitor(db.Model):
     device_id = db.Column(db.Integer, unique=True, nullable=False)
     udid = db.Column(db.String(25), unique=True, nullable=False)
 
-    def __init__(self, udid):
+    def __init__(self, group_id, device_id, udid):
+        self.group_id = group_id
+        self.device_id = device_id
         self.udid = udid
 
     def __repr__(self):

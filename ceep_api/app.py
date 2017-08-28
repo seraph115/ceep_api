@@ -2,11 +2,11 @@ import logging.config
 
 from flask import Flask, Blueprint
 from ceep_api import settings
-from ceep_api.apis import restplus
+from ceep_api.api import restplus
 
-from ceep_api.apis.adbmonitors import ns as adbmonitors_namespace
+from ceep_api.api.endpoints.adbmonitors import ns as adbmonitors_namespace
 
-from ceep_api.apis.restplus import api
+from ceep_api.api.restplus import api
 from ceep_api.database import db
 
 
