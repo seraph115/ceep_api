@@ -5,7 +5,6 @@ from ceep_api import settings
 from ceep_api.apis import restplus
 
 from ceep_api.apis.adbmonitors import ns as adbmonitors_namespace
-#from rest_api_demo.api.blog.endpoints.categories import ns as blog_categories_namespace
 
 from ceep_api.apis.restplus import api
 from ceep_api.database import db
@@ -32,7 +31,6 @@ def initialize_app(flask_app):
     blueprint = Blueprint('api', __name__, url_prefix='/api/1.0')
     api.init_app(blueprint)
     api.add_namespace(adbmonitors_namespace)
-    #api.add_namespace(blog_categories_namespace)
     flask_app.register_blueprint(blueprint)
 
     db.init_app(flask_app)
