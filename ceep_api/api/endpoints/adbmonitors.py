@@ -2,6 +2,7 @@ import logging
 
 from flask import request
 from flask_restplus import Resource
+from ceep_api.api.parsers import adbmonitor_arguments
 from ceep_api.api.business import create_adbmonitor, update_adbmonitor, delete_adbmonitor
 from ceep_api.api.serializers import adbMonitor
 from ceep_api.api.restplus import api
@@ -24,8 +25,9 @@ class AdbMonitorCollection(Resource):
         adbMonitors = AdbMonitor.query.all()
         return adbMonitors
 
-    @api.response(201, 'AdbMonitor successfully created.')
     @api.expect(adbMonitor)
+    #@api.expect(adbmonitor_arguments, validate=True)
+    @api.response(201, 'AdbMonitor successfully created.')
     def post(self):
         """
         Creates a AdbMonitor.

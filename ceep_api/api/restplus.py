@@ -9,7 +9,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 log = logging.getLogger(__name__)
 
-api = Api(version='1.0', title='CEEP API接口',
+api = Api(version='1.0', title='CEEP API',
           description='学生表现预测API接口系统')
 
 
