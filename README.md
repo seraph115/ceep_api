@@ -1,5 +1,7 @@
 # CEEP API SYSTEM
-ceep_api system
+**ceep_api** system
+
+## Usage
 
 ```bash
 $ cd /path/to/your/workspace
@@ -17,3 +19,12 @@ $ pip install -r requirements.txt
 $ export PYTHONPATH=.:$PYTHONPATH
 $ python ceep_api/app.py
 ```
+
+## Technology Stack
+
+### Components
+
+* RESTful framework - [flask-restplus](http://flask-restplus.readthedocs.org)
+* ORM framework - [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/)
+* DateBase Driver  - [pymysql](https://pymysql.readthedocs.io)
+
