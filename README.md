@@ -5,7 +5,7 @@
 
 ```bash
 $ cd /path/to/your/workspace
-$ git clone 
+$ git clone https://github.com/seraph115/ceep_api.git
 $ cd ceep_api
 ```
 
