@@ -33,3 +33,6 @@ $ python ceep_api/app.py
 * [Building-beautiful-restful-apis...](http://michal.karzynski.pl/blog/2016/06/19/building-beautiful-restful-apis-using-flask-swagger-ui-flask-restplus/)
 * [virtualenv](http://pythonguidecn.readthedocs.io/zh/latest/dev/virtualenvs.html)
 * [pyvenv or venv](https://docs.python.org/3/library/venv.html)
+
+
+
