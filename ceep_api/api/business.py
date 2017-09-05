@@ -7,7 +7,7 @@ def create_adbmonitor(data):
     device_id = data.get('device_id')
     udid = data.get('udid')
 
-    adbMonitor = AdbMonitor(group_id, device_id, udid)    
+    adbMonitor = AdbMonitor(group_id, device_id, udid)
     db.session.add(adbMonitor)
     db.session.commit
 
