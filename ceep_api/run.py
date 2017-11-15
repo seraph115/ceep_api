@@ -5,6 +5,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import logging.config
 
 from flask import Flask, Blueprint
+from werkzeug.contrib.fixers import ProxyFix
+
 from ceep_api import settings
 from ceep_api.api import restplus
 
@@ -12,11 +14,6 @@ from ceep_api.api.endpoints.adbmonitors import ns as adbmonitors_namespace
 
 from ceep_api.api.restplus import api
 from ceep_api.database import db
-
-
-app = Flask(__name__)
-logging.config.fileConfig('logging.conf')
-log = logging.getLogger(__name__)
 
 
 def configure_app(flask_app):
@@ -27,22 +24,21 @@ def configure_app(flask_app):
     flask_app.config['RESTPLUS_MASK_SWAGGER'] = settings.RESTPLUS_MASK_SWAGGER
     flask_app.config['ERROR_404_HELP'] = settings.RESTPLUS_ERROR_404_HELP
 
-def initialize_app(flask_app):
-    configure_app(flask_app)
 
+def initialize_app(flask_app):
+    log.debug('Initialize APP...')
+    configure_app(flask_app)
     blueprint = Blueprint('api', __name__, url_prefix='/api/1.0')
     api.init_app(blueprint)
     api.add_namespace(adbmonitors_namespace)
     flask_app.register_blueprint(blueprint)
-
     db.init_app(flask_app)
 
 
-def main():
-    initialize_app(app)
-    log.info('>>>>> Starting development server at http://{}/api/ <<<<<'.format(settings.FLASK_HOST + ':' + str(settings.FLASK_PORT)))
-    app.run(host=settings.FLASK_HOST, port=settings.FLASK_PORT, debug=settings.FLASK_DEBUG)
-    
+logging.config.fileConfig('logging.conf')
+log = logging.getLogger(__name__)
 
-if __name__ == "__main__":
-    main()
+app = Flask(__name__)
+initialize_app(app)
+app.wsgi_app = ProxyFix(app.wsgi_app)
+

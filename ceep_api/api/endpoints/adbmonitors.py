@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 import logging
 
 from flask import request
@@ -22,6 +24,7 @@ class AdbMonitorCollection(Resource):
         """
         Returns list of AdbMonitors.
         """
+        log.debug('adbMonitors debug!!!')
         adbMonitors = AdbMonitor.query.all()
         return adbMonitors
 
