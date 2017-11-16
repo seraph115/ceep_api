@@ -1,5 +1,9 @@
 from locust import HttpLocust, TaskSet, task
 
+# How to run Locust: (Web URL: http://127.0.0.1:8089)
+# locust -f locust_files/locustfile.py --host=http://127.0.0.1:8888
+# locust -f locust_files/locustfile.py --slave --master-host=127.0.0.1 --host=http://127.0.0.1:8888
+
 class UserBehavior(TaskSet):
     def on_start(self):
         print('Locust on start...')
@@ -15,7 +19,4 @@ class UserBehavior(TaskSet):
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
     min_wait = 1000
-    max_wait = 5000
-
-# locust -f test/locust_test.py --host=http://127.0.0.1:8888
-# locust -f test/locust_test.py --slave --master-host=127.0.0.1 --host=http://127.0.0.1:8888
+    max_wait = 3000
